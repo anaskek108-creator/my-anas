@@ -3,17 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Official App</title>
+    <title>Anas Editor</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding-top: 50px; background-color: #f0f2f5; }
-        .card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: inline-block; }
-        h1 { color: #007bff; }
+        body { font-family: sans-serif; margin: 0; background-color: #0f0f14; color: #ffffff; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+        .preview-window { flex: 1; display: flex; justify-content: center; align-items: center; background-color: #000000; position: relative; }
+        .preview-placeholder { text-align: center; color: #8e8e93; }
+        .preview-placeholder img { max-width: 80%; border-radius: 8px; }
+        .timeline-section { height: 150px; background-color: #18181f; border-top: 1px solid #2c2c35; display: flex; align-items: center; justify-content: center; color: #8e8e93; font-size: 14px; }
+        .bottom-nav { height: 70px; background-color: #09090d; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #1c1c24; padding-bottom: env(safe-area-inset-bottom); }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: #cccccc; cursor: pointer; font-size: 11px; text-decoration: none; background: none; border: none; padding: 5px; }
+        .nav-item:hover { color: #007bff; }
+        .nav-icon { font-size: 20px; margin-bottom: 4px; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>Welcome to My App</h1>
-        <p>This is the official production version.</p>
+
+    <!-- Video Preview Area -->
+    <div class="preview-window">
+        <div class="preview-placeholder">
+            <h2>ANAS EDITOR</h2>
+            <p>Video Preview Window</p>
+        </div>
     </div>
+
+    <!-- Timeline Area -->
+    <div class="timeline-section">
+        <div>— Timeline Track —</div>
+    </div>
+
+    <!-- CapCut Style Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-item" onclick="alert('Edit Tools Opened')">
+            <span class="nav-icon">✂️</span>
+            <span>Edit</span>
+        </button>
+        <button class="nav-item" onclick="alert('Audio Tools Opened')">
+            <span class="nav-icon">🎵</span>
+            <span>Audio</span>
+        </button>
+        <button class="nav-item" onclick="alert('Text Tools Opened')">
+            <span class="nav-icon">Ｔ</span>
+            <span>Text</span>
+        </button>
+        <button class="nav-item" onclick="alert('Stickers Opened')">
+            <span class="nav-icon">😊</span>
+            <span>Stickers</span>
+        </button>
+        <button class="nav-item" onclick="alert('Overlay Opened')">
+            <span class="nav-icon">🔲</span>
+            <span>Overlay</span>
+        </button>
+        <button class="nav-item" onclick="alert('Effects Opened')">
+            <span class="nav-icon">✨</span>
+            <span>Effects</span>
+        </button>
+    </nav>
+
 </body>
 </html>
