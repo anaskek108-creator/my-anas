@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anas Editor - Home</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; background-color: #0f0f14; color: #ffffff; padding: 20px; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .logo { font-size: 24px; font-weight: bold; color: #007bff; }
+        .pro-badge { background: #ffb300; color: #000; padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+        .main-btn { background: linear-gradient(135deg, #007bff, #0056b3); width: 100%; padding: 25px; border: none; border-radius: 12px; color: white; font-size: 18px; font-weight: bold; cursor: pointer; margin-bottom: 30px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .section-title { font-size: 18px; margin-bottom: 15px; color: #8e8e93; }
+        .templates-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .template-card { background: #18181f; border-radius: 8px; overflow: hidden; border: 1px solid #2c2c35; }
+        .template-thumb { height: 120px; background: #2c2c35; display: flex; align-items: center; justify-content: center; color: #8e8e93; font-size: 14px; }
+        .template-info { padding: 10px; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+    <!-- Upper Header -->
+    <div class="header">
+        <div class="logo">ANAS EDITOR</div>
+        <div class="pro-badge">👑 PRO</div>
+    </div>
+
+    <!-- Create New Project Button -->
+    <button class="main-btn" onclick="window.location.href='index.html'">
+        <span>➕</span> New Project
+    </button>
+
+    <!-- Templates Section -->
+    <div class="section-title">Smart Templates</div>
+    <div class="templates-grid">
+        <div class="template-card">
+            <div class="template-thumb">🎬 Cinematic</div>
+            <div class="template-info">TikTok / Reels</div>
+        </div>
+        <div class="template-card">
+            <div class="template-thumb">🎮 Gaming</div>
+            <div class="template-info">YouTube Short</div>
+        </div>
+    </div>
+
+</body>
+</html>
