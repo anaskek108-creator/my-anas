@@ -7,9 +7,10 @@
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; background-color: #0f0f14; color: #ffffff; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
         .header { height: 50px; background-color: #0f0f14; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; border-bottom: 1px solid #1c1c24; }
-        .logo { font-size: 18px; font-weight: bold; letter-spacing: 0.5px; color: #ffffff; }
+        .logo { font-size: 18px; font-weight: bold; color: #ffffff; }
         .export-btn { background-color: #2f80ed; color: white; border: none; padding: 6px 14px; border-radius: 4px; font-size: 13px; font-weight: 600; cursor: pointer; }
-        .preview-window { flex: 1; display: flex; justify-content: center; align-items: center; background-color: #000000; position: relative; }
+        .preview-window { flex: 1; display: flex; justify-content: center; align-items: center; background-color: #000000; position: relative; overflow: hidden; }
+        video { width: 100%; height: 100%; object-fit: contain; display: none; }
         .preview-placeholder { text-align: center; color: #8e8e93; font-size: 14px; }
         .preview-placeholder span { font-size: 40px; display: block; margin-bottom: 10px; }
         .timeline-section { height: 160px; background-color: #14141b; border-top: 1px solid #2c2c35; display: flex; flex-direction: column; position: relative; }
@@ -18,65 +19,82 @@
         .timeline-track { flex: 1; display: flex; align-items: center; justify-content: center; color: #55555e; font-size: 12px; font-family: monospace; }
         .bottom-nav { height: 75px; background-color: #09090d; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #1c1c24; padding-bottom: env(safe-area-inset-bottom); }
         .nav-item { display: flex; flex-direction: column; align-items: center; color: #a5a5a5; cursor: pointer; font-size: 11px; text-decoration: none; background: none; border: none; padding: 8px 0; width: 60px; }
-        .nav-item active { color: #ffffff; }
         .nav-icon { font-size: 22px; margin-bottom: 5px; }
+        #file-input { display: none; }
     </style>
 </head>
 <body>
 
-    <!-- Top Action Bar -->
     <div class="header">
         <div class="logo">Anas Editor</div>
         <button class="export-btn" onclick="alert('Exporting Video...')">Export</button>
     </div>
 
-    <!-- Video Preview Player -->
-    <div class="preview-window">
-        <div class="preview-placeholder">
-            <span>🎬</span>
-            <p>Tap "New Project" to load media</p>
+    <!-- Video Preview with Real Video Element -->
+    <div class="preview-window" onclick="document.getElementById('file-input').click()">
+        <div class="preview-placeholder" id="placeholder">
+            <span>➕</span>
+            <p>Tap here or "Edit" to load video from phone</p>
         </div>
+        <video id="video-player" controls></video>
     </div>
 
-    <!-- Video Timeline Tracks -->
+    <!-- Hidden Input to open Gallery -->
+    <input type="file" id="file-input" accept="video/*" onchange="loadVideo(event)">
+
     <div class="timeline-section">
         <div class="timeline-tools">
             <button class="tool-btn" onclick="alert('Undo')">↩️</button>
             <button class="tool-btn" onclick="alert('Redo')">↪️</button>
             <button class="tool-btn" onclick="alert('Fullscreen')">🔲</button>
         </div>
-        <div class="timeline-track">
-            00:00 | ----------------------- Main Track -----------------------
+        <div class="timeline-track" id="track-info">
+            00:00 | ----------------------- Video Track -----------------------
         </div>
     </div>
 
-    <!-- CapCut Clean Style Bottom Menu -->
     <nav class="bottom-nav">
-        <button class="nav-item" onclick="alert('Edit clicked')">
+        <button class="nav-item" onclick="document.getElementById('file-input').click()">
             <span class="nav-icon">✂️</span>
             <span>Edit</span>
         </button>
-        <button class="nav-item" onclick="alert('Audio clicked')">
+        <button class="nav-item" onclick="alert('Audio Tools Coming Soon')">
             <span class="nav-icon">🎵</span>
             <span>Audio</span>
         </button>
-        <button class="nav-item" onclick="alert('Text clicked')">
+        <button class="nav-item" onclick="alert('Text Tools Coming Soon')">
             <span class="nav-icon">Ｔ</span>
             <span>Text</span>
         </button>
-        <button class="nav-item" onclick="alert('Stickers clicked')">
+        <button class="nav-item" onclick="alert('Stickers Coming Soon')">
             <span class="nav-icon">😊</span>
             <span>Stickers</span>
         </button>
-        <button class="nav-item" onclick="alert('Overlay clicked')">
+        <button class="nav-item" onclick="alert('Overlay Coming Soon')">
             <span class="nav-icon">🔲</span>
             <span>Overlay</span>
         </button>
-        <button class="nav-item" onclick="alert('Effects clicked')">
+        <button class="nav-item" onclick="alert('Effects Coming Soon')">
             <span class="nav-icon">✨</span>
             <span>Effects</span>
         </button>
     </nav>
 
+    <script>
+        function loadVideo(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const videoPlayer = document.getElementById('video-player');
+                const placeholder = document.getElementById('placeholder');
+                const trackInfo = document.getElementById('track-info');
+                
+                videoPlayer.src = URL.createObjectURL(file);
+                videoPlayer.style.display = 'block';
+                placeholder.style.display = 'none';
+                trackInfo.innerText = `🎬 ${file.name} | Loaded Successfully`;
+                videoPlayer.play();
+            }
+        }
+    </script>
 </body>
 </html>
