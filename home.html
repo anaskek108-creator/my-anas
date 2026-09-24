@@ -3,81 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Anas Editor - Full Edition</title>
+    <title>Anas Editor - Pro Edition</title>
     <style>
         * { box-sizing: border-box; padding: 0; margin: 0; }
-        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background-color: #0c0c10; color: #ffffff; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
-        .header { height: 40px; background-color: #121218; display: flex; justify-content: space-between; align-items: center; padding: 0 12px; border-bottom: 1px solid #1c1c24; }
-        .logo { font-size: 15px; font-weight: bold; letter-spacing: 0.5px; color: #007bff; }
-        .export-btn { background-color: #2f80ed; color: white; border: none; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #0c0c10; color: #ffffff; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+        .header { height: 44px; background-color: #121218; display: flex; justify-content: space-between; align-items: center; padding: 0 12px; border-bottom: 1px solid #1c1c24; }
+        .logo { font-size: 15px; font-weight: bold; letter-spacing: 0.5px; color: #2f80ed; }
+        .export-btn { background-color: #2f80ed; color: white; border: none; padding: 5px 12px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; }
         .preview-window { flex: 1; display: flex; justify-content: center; align-items: center; background-color: #000000; position: relative; overflow: hidden; }
         video { width: 100%; height: 100%; object-fit: contain; display: none; }
         .preview-placeholder { text-align: center; color: #8e8e93; font-size: 12px; cursor: pointer; }
-        .preview-placeholder span { font-size: 30px; display: block; margin-bottom: 5px; }
+        .preview-placeholder span { font-size: 32px; display: block; margin-bottom: 6px; }
         .overlay-text { position: absolute; font-size: 24px; font-weight: bold; color: #ffeb3b; text-shadow: 2px 2px 6px #000; padding: 5px; display: none; top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 10; pointer-events: none; }
-        .overlay-sticker { position: absolute; font-size: 40px; display: none; top: 60%; left: 50%; transform: translate(-50%, -50%); z-index: 10; pointer-events: none; }
-        .timeline-section { height: 80px; background-color: #121218; border-top: 1px solid #22222a; display: flex; flex-direction: column; }
-        .timeline-tools { height: 30px; display: flex; align-items: center; padding: 0 12px; gap: 15px; border-bottom: 1px solid #1c1c24; }
-        .tool-btn { background: none; border: none; color: #a5a5a5; font-size: 12px; }
+        .overlay-sticker { position: absolute; font-size: 42px; display: none; top: 60%; left: 50%; transform: translate(-50%, -50%); z-index: 10; pointer-events: none; }
+        .timeline-section { height: 85px; background-color: #121218; border-top: 1px solid #22222a; display: flex; flex-direction: column; }
+        .timeline-tools { height: 32px; display: flex; align-items: center; padding: 0 12px; gap: 15px; border-bottom: 1px solid #1c1c24; }
+        .tool-btn { background: none; border: none; color: #a5a5a5; font-size: 12px; cursor: pointer; }
         .timeline-track { flex: 1; display: flex; align-items: center; justify-content: center; color: #666670; font-size: 10px; font-family: monospace; background-color: #08080c; }
         .bottom-nav { height: 60px; background-color: #09090d; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #1c1c24; padding-bottom: env(safe-area-inset-bottom); }
-        .nav-item { display: flex; flex-direction: column; align-items: center; color: #a5a5a5; background: none; border: none; font-size: 10px; width: 55px; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: #a5a5a5; background: none; border: none; font-size: 10px; width: 55px; cursor: pointer; }
         .nav-icon { font-size: 18px; margin-bottom: 2px; }
         #file-input, #audio-input { display: none; }
-        .filter-active { filter: sepia(0.8) hue-rotate(160deg) saturate(2); }
+        .filter-active { filter: sepia(0.5) hue-rotate(180deg) saturate(2.5); }
     </style>
 </head>
 <body>
 
+    <!-- Upper Navbar -->
     <div class="header">
         <div class="logo">ANAS EDITOR 👑</div>
-        <button class="export-btn" onclick="alert('📸 تم تصدير وحفظ الفيديو في استوديو هاتفك بنجاح!')">تصدير</button>
+        <button class="export-btn" onclick="alert('📸 Video Exported and Saved to your Gallery Successfully!')">Export</button>
     </div>
 
+    <!-- Live Preview Monitor -->
     <div class="preview-window" id="video-container">
         <div class="preview-placeholder" id="placeholder" onclick="document.getElementById('file-input').click()">
             <span>➕</span>
-            <p>اضغط هنا لرفع فيديو الألعاب الخاص بك</p>
+            <p>Tap here to load your gaming video</p>
         </div>
         <video id="video-player" controls playsinline></video>
         <div id="video-text" class="overlay-text"></div>
         <div id="video-sticker" class="overlay-sticker"></div>
     </div>
 
+    <!-- Hidden Connectors -->
     <input type="file" id="file-input" accept="video/*" onchange="loadVideo(event)">
     <input type="file" id="audio-input" accept="audio/*" onchange="loadAudio(event)">
 
+    <!-- Media Timelines -->
     <div class="timeline-section">
         <div class="timeline-tools">
-            <button class="tool-btn" onclick="alert('↩️ تراجع')">↩️</button>
-            <button class="tool-btn" onclick="alert('↪️ تقدم')">↪️</button>
-            <button class="tool-btn" onclick="location.reload()">🔄 إعادة تعيين</button>
+            <button class="tool-btn" onclick="alert('↩️ Undo Action')">↩️</button>
+            <button class="tool-btn" onclick="alert('↪️ Redo Action')">↪️</button>
+            <button class="tool-btn" onclick="location.reload()">🔄 Reset All</button>
         </div>
         <div class="timeline-track" id="track-info">
-            00:00 | ----------------------- مسار الفيديو الرئيسي -----------------------
+            00:00 | ----------------------- Main Video Track -----------------------
         </div>
     </div>
 
+    <!-- CapCut Clean Style Bottom Control Navigation -->
     <nav class="bottom-nav">
         <button class="nav-item" onclick="document.getElementById('file-input').click()">
             <span class="nav-icon">✂️</span>
-            <span>تعديل</span>
+            <span>Edit</span>
         </button>
         <button class="nav-item" onclick="document.getElementById('audio-input').click()">
             <span class="nav-icon">🎵</span>
-            <span>صوت</span>
+            <span>Audio</span>
         </button>
         <button class="nav-item" onclick="addTextOverlay()">
             <span class="nav-icon">Ｔ</span>
-            <span>نص</span>
+            <span>Text</span>
         </button>
         <button class="nav-item" onclick="addSticker()">
             <span class="nav-icon">😊</span>
-            <span>ملصقات</span>
+            <span>Stickers</span>
         </button>
         <button class="nav-item" onclick="applyEffect()">
             <span class="nav-icon">✨</span>
-            <span>مؤثرات</span>
+            <span>Effects</span>
         </button>
     </nav>
 
@@ -91,13 +96,13 @@
                 videoPlayer.src = URL.createObjectURL(file);
                 videoPlayer.style.display = 'block';
                 placeholder.style.display = 'none';
-                trackInfo.innerText = `🎬 تم تحميل: ${file.name}`;
+                trackInfo.innerText = `🎬 Track: ${file.name}`;
                 videoPlayer.play();
             }
         }
 
         function addTextOverlay() {
-            const userText = prompt("اكتب النص الذي تريده فوق فيديو فري فاير:");
+            const userText = prompt("Type the text layer over your video:");
             if (userText) {
                 const textDiv = document.getElementById('video-text');
                 textDiv.innerText = userText;
@@ -109,14 +114,14 @@
             const file = event.target.files[0];
             if (file) {
                 const trackInfo = document.getElementById('track-info');
-                trackInfo.innerText = `🎵 تم دمج الموسيقى: ${file.name}`;
-                alert("🎵 تم تركيب الصوت على المقطع بنجاح!");
+                trackInfo.innerText = `🎵 Audio Mixed: ${file.name}`;
+                alert("🎵 Audio track blended successfully!");
             }
         }
 
         function addSticker() {
             const stickers = ["🔥", "😎", "👑", "🎯", "💥", "😂"];
-            const choice = prompt("اختر رقم ملصق لإضافته:\n1- 🔥\n2- 😎\n3- 👑\n4- 🎯");
+            const choice = prompt("Choose sticker number:\n1- 🔥\n2- 😎\n3- 👑\n4- 🎯");
             if (choice >= 1 && choice <= 4) {
                 const stickerDiv = document.getElementById('video-sticker');
                 stickerDiv.innerText = stickers[choice - 1];
@@ -127,7 +132,7 @@
         function applyEffect() {
             const player = document.getElementById('video-player');
             player.classList.toggle('filter-active');
-            alert("✨ تم تطبيق فلتر ألوان سينمائي للألعاب!");
+            alert("✨ Cinematic gaming color filter triggered!");
         }
     </script>
 </body>
