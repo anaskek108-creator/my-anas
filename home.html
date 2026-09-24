@@ -3,45 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anas Editor - Home</title>
+    <title>Anas Editor</title>
     <style>
-        body { font-family: sans-serif; margin: 0; background-color: #0f0f14; color: #ffffff; padding: 20px; }
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-        .logo { font-size: 24px; font-weight: bold; color: #007bff; }
-        .pro-badge { background: #ffb300; color: #000; padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
-        .main-btn { background: linear-gradient(135deg, #007bff, #0056b3); width: 100%; padding: 25px; border: none; border-radius: 12px; color: white; font-size: 18px; font-weight: bold; cursor: pointer; margin-bottom: 30px; display: flex; align-items: center; justify-content: center; gap: 10px; box-sizing: border-box; }
-        .section-title { font-size: 18px; margin-bottom: 15px; color: #8e8e93; }
-        .templates-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
-        .template-card { background: #18181f; border-radius: 8px; overflow: hidden; border: 1px solid #2c2c35; }
-        .template-thumb { height: 120px; background: #2c2c35; display: flex; align-items: center; justify-content: center; color: #8e8e93; font-size: 14px; }
-        .template-info { padding: 10px; font-size: 14px; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; background-color: #0f0f14; color: #ffffff; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+        .header { height: 50px; background-color: #0f0f14; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; border-bottom: 1px solid #1c1c24; }
+        .logo { font-size: 18px; font-weight: bold; letter-spacing: 0.5px; color: #ffffff; }
+        .export-btn { background-color: #2f80ed; color: white; border: none; padding: 6px 14px; border-radius: 4px; font-size: 13px; font-weight: 600; cursor: pointer; }
+        .preview-window { flex: 1; display: flex; justify-content: center; align-items: center; background-color: #000000; position: relative; }
+        .preview-placeholder { text-align: center; color: #8e8e93; font-size: 14px; }
+        .preview-placeholder span { font-size: 40px; display: block; margin-bottom: 10px; }
+        .timeline-section { height: 160px; background-color: #14141b; border-top: 1px solid #2c2c35; display: flex; flex-direction: column; position: relative; }
+        .timeline-tools { height: 40px; display: flex; align-items: center; padding: 0 12px; gap: 15px; border-bottom: 1px solid #2c2c35; }
+        .tool-btn { background: none; border: none; color: #cccccc; font-size: 16px; cursor: pointer; }
+        .timeline-track { flex: 1; display: flex; align-items: center; justify-content: center; color: #55555e; font-size: 12px; font-family: monospace; }
+        .bottom-nav { height: 75px; background-color: #09090d; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #1c1c24; padding-bottom: env(safe-area-inset-bottom); }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: #a5a5a5; cursor: pointer; font-size: 11px; text-decoration: none; background: none; border: none; padding: 8px 0; width: 60px; }
+        .nav-item active { color: #ffffff; }
+        .nav-icon { font-size: 22px; margin-bottom: 5px; }
     </style>
 </head>
 <body>
 
-    <!-- Upper Header -->
+    <!-- Top Action Bar -->
     <div class="header">
-        <div class="logo">ANAS EDITOR</div>
-        <div class="pro-badge">👑 PRO</div>
+        <div class="logo">Anas Editor</div>
+        <button class="export-btn" onclick="alert('Exporting Video...')">Export</button>
     </div>
 
-    <!-- Create New Project Button -->
-    <button class="main-btn" onclick="window.location.href='index.html'">
-        <span>➕</span> New Project
-    </button>
-
-    <!-- Templates Section -->
-    <div class="section-title">Smart Templates</div>
-    <div class="templates-grid">
-        <div class="template-card">
-            <div class="template-thumb">🎬 Cinematic</div>
-            <div class="template-info">TikTok / Reels</div>
-        </div>
-        <div class="template-card">
-            <div class="template-thumb">🎮 Gaming</div>
-            <div class="template-info">YouTube Short</div>
+    <!-- Video Preview Player -->
+    <div class="preview-window">
+        <div class="preview-placeholder">
+            <span>🎬</span>
+            <p>Tap "New Project" to load media</p>
         </div>
     </div>
+
+    <!-- Video Timeline Tracks -->
+    <div class="timeline-section">
+        <div class="timeline-tools">
+            <button class="tool-btn" onclick="alert('Undo')">↩️</button>
+            <button class="tool-btn" onclick="alert('Redo')">↪️</button>
+            <button class="tool-btn" onclick="alert('Fullscreen')">🔲</button>
+        </div>
+        <div class="timeline-track">
+            00:00 | ----------------------- Main Track -----------------------
+        </div>
+    </div>
+
+    <!-- CapCut Clean Style Bottom Menu -->
+    <nav class="bottom-nav">
+        <button class="nav-item" onclick="alert('Edit clicked')">
+            <span class="nav-icon">✂️</span>
+            <span>Edit</span>
+        </button>
+        <button class="nav-item" onclick="alert('Audio clicked')">
+            <span class="nav-icon">🎵</span>
+            <span>Audio</span>
+        </button>
+        <button class="nav-item" onclick="alert('Text clicked')">
+            <span class="nav-icon">Ｔ</span>
+            <span>Text</span>
+        </button>
+        <button class="nav-item" onclick="alert('Stickers clicked')">
+            <span class="nav-icon">😊</span>
+            <span>Stickers</span>
+        </button>
+        <button class="nav-item" onclick="alert('Overlay clicked')">
+            <span class="nav-icon">🔲</span>
+            <span>Overlay</span>
+        </button>
+        <button class="nav-item" onclick="alert('Effects clicked')">
+            <span class="nav-icon">✨</span>
+            <span>Effects</span>
+        </button>
+    </nav>
 
 </body>
 </html>
