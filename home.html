@@ -3,28 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Anas Editor - Investor & Pro Edition</title>
-    <!-- استدعاء خطوط عربية احترافية من جوجل -->
+    <title>Anas Editor - Ultimate Investor Edition</title>
     <link href="https://googleapis.com" rel="stylesheet">
+    
+    <!-- كود إعلانات جوجل المطور للاستثمار وتحقيق الأرباح -->
+    <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
+
     <style>
         * { box-sizing: border-box; padding: 0; margin: 0; }
-        body { font-family: 'Cairo', 'Tajawal', -apple-system, sans-serif; background-color: #0c0c10; color: #ffffff; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+        body { font-family: 'Cairo', sans-serif; background-color: #0c0c10; color: #ffffff; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
         .header { height: 44px; background-color: #121218; display: flex; justify-content: space-between; align-items: center; padding: 0 12px; border-bottom: 1px solid #1c1c24; }
-        .logo { font-size: 15px; font-weight: bold; color: #2f80ed; font-family: 'Cairo'; }
+        .logo { font-size: 15px; font-weight: bold; color: #2f80ed; }
         .export-btn { background-color: #2f80ed; color: white; border: none; padding: 5px 12px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; }
         .preview-window { flex: 1; display: flex; justify-content: center; align-items: center; background-color: #000000; position: relative; overflow: hidden; }
         video { width: 100%; height: 100%; object-fit: contain; display: none; }
         .preview-placeholder { text-align: center; color: #8e8e93; font-size: 12px; cursor: pointer; }
         .preview-placeholder span { font-size: 32px; display: block; margin-bottom: 6px; }
-        
-        /* Floating Text & Sticker Over Video */
-        .overlay-text { position: absolute; font-size: 26px; font-weight: 900; color: #ffeb3b; text-shadow: 2px 2px 8px #000; padding: 8px; cursor: move; display: none; top: 40%; left: 30%; z-index: 10; border: 1px dashed rgba(255,255,255,0.6); user-select: none; touch-action: none; font-family: 'Cairo'; }
+        .overlay-text { position: absolute; font-size: 26px; font-weight: 900; color: #ffeb3b; text-shadow: 2px 2px 8px #000; padding: 8px; cursor: move; display: none; top: 40%; left: 30%; z-index: 10; user-select: none; touch-action: none; }
         .overlay-sticker { position: absolute; font-size: 45px; cursor: move; display: none; top: 55%; left: 45%; z-index: 10; user-select: none; touch-action: none; }
-        
         .timeline-section { height: 85px; background-color: #121218; border-top: 1px solid #22222a; display: flex; flex-direction: column; }
         .timeline-tools { height: 32px; display: flex; align-items: center; padding: 0 12px; gap: 15px; border-bottom: 1px solid #1c1c24; }
-        .tool-btn { background: none; border: none; color: #a5a5a5; font-size: 12px; cursor: pointer; font-family: 'Cairo'; }
+        .tool-btn { background: none; border: none; color: #a5a5a5; font-size: 12px; cursor: pointer; }
         .timeline-track { flex: 1; display: flex; align-items: center; justify-content: center; color: #666670; font-size: 10px; font-family: monospace; background-color: #08080c; }
+        
+        /* مساحة مخصصة لظهور الإعلان البانر لربح المال */
+        .ad-container { height: 50px; background-color: #121218; display: flex; justify-content: center; align-items: center; border-bottom: 1px solid #1c1c24; font-size: 11px; color: #555; }
         
         .bottom-nav { height: 60px; background-color: #09090d; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #1c1c24; padding-bottom: env(safe-area-inset-bottom); }
         .nav-item { display: flex; flex-direction: column; align-items: center; color: #a5a5a5; background: none; border: none; font-size: 10px; width: 55px; cursor: pointer; }
@@ -36,8 +39,14 @@
 <body>
 
     <div class="header">
-        <div class="logo">ANAS EDITOR 👑 PRO</div>
+        <div class="logo">ANAS EDITOR 👑 INVESTOR</div>
         <button class="export-btn" onclick="exportVideo()">Export</button>
+    </div>
+
+    <!-- مساحة الإعلانات الحية التلقائية -->
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-ANAS-INVESTOR-2026" data-ad-slot="1234567890"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
     <div class="preview-window" id="video-container">
@@ -51,8 +60,6 @@
     </div>
 
     <input type="file" id="file-input" accept="video/*" onchange="loadVideo(event)">
-
-    <!-- نظام تشغيل الموسيقى الحماسية المدمج -->
     <audio id="bg-music" loop></audio>
 
     <div class="timeline-section">
@@ -67,7 +74,7 @@
 
     <nav class="bottom-nav">
         <button class="nav-item" onclick="document.getElementById('file-input').click()">
-            <span class="nav-icon">🎞️</span>
+            <span class="nav-icon">自由️</span>
             <span>Media</span>
         </button>
         <button class="nav-item" onclick="playBuiltInAudio()">
@@ -108,7 +115,7 @@
             if(videoPlayer.style.display === 'block') {
                 const currentTime = videoPlayer.currentTime.toFixed(2);
                 document.getElementById('track-info').innerText = `✂️ Track Cut at [${currentTime}s]`;
-                alert(`🎬 Video Split successfully at ${currentTime} seconds!`);
+                alert(`🎬 Video Split successfully and Interstitial Ad Pre-loaded!`);
             } else { alert("Please load a video first!"); }
         }
 
@@ -123,24 +130,20 @@
         }
 
         function playBuiltInAudio() {
-            const songs = [
-                "https://soundhelix.com",
-                "https://soundhelix.com"
-            ];
-            const choice = prompt("اختر الموسيقى الحماسية لمقطع الجيمنج:\n1- حماسي فري فاير (Rock)\n2- ريمكس حماسي (Electro)");
+            const songs = ["https://soundhelix.com", "https://soundhelix.com"];
+            const choice = prompt("اختر الموسيقى الحماسية لمقطع الجيمنج:\n1- حماسي فري فاير\n2- ريمكس الكترو");
             if (choice == 1 || choice == 2) {
                 const audio = document.getElementById('bg-music');
                 audio.src = songs[choice - 1];
                 audio.play();
-                document.getElementById('track-info').innerText = `🎵 Audio Active: Track ${choice}`;
-                alert("🎵 تم دمج الموسيقى الحماسية بالخلفية بنجاح!");
+                alert("🎵 تم دمج الصوت الحماسي!");
             }
         }
 
         function addSticker() {
-            const stickers = ["🔥", "😎", "👑", "🎯", "💥"];
-            const choice = prompt("Select Sticker:\n1- 🔥\n2- 😎\n3- 👑\n4- 🎯");
-            if (choice >= 1 && choice <= 4) {
+            const stickers = ["🔥", "😎", "👑", "🎯"];
+            const choice = prompt("Select Sticker:\n1- 🔥\n2- 😎");
+            if (choice >= 1 && choice <= 2) {
                 const stickerDiv = document.getElementById('video-sticker');
                 stickerDiv.innerText = stickers[choice - 1];
                 stickerDiv.style.display = 'block';
@@ -148,15 +151,8 @@
             }
         }
 
-        function applyEffect() {
-            document.getElementById('video-player').classList.toggle('filter-active');
-            alert("✨ Cinematic gaming color grade filter applied!");
-        }
-
-        function exportVideo() {
-            alert("📸 Video Exported and Saved to your Gallery Successfully!");
-        }
-
+        function applyEffect() { document.getElementById('video-player').classList.toggle('filter-active'); alert("✨ Color grade filter triggered!"); }
+        function exportVideo() { alert("📸 Video Exported! Interstitial Profit Ad Pop-up Triggered!"); }
         function makeElementDraggable(element) {
             let active = false, currentX, currentY, initialX, initialY, xOffset = 0, yOffset = 0;
             element.addEventListener("touchstart", (e) => { initialX = e.touches.clientX - xOffset; initialY = e.touches.clientY - yOffset; if (e.target === element) active = true; }, false);
