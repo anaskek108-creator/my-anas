@@ -2,25 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Anas Editor</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; background-color: #0f0f14; color: #ffffff; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
-        .header { height: 50px; background-color: #0f0f14; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; border-bottom: 1px solid #1c1c24; box-sizing: border-box; }
-        .logo { font-size: 18px; font-weight: bold; color: #ffffff; }
-        .export-btn { background-color: #2f80ed; color: white; border: none; padding: 6px 14px; border-radius: 4px; font-size: 13px; font-weight: 600; cursor: pointer; }
-        .preview-window { flex: 1; display: flex; justify-content: center; align-items: center; background-color: #000000; position: relative; overflow: hidden; min-height: 0; }
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; background-color: #0f0f14; color: #ffffff; display: flex; flex-direction: column; height: 100vh; height: -webkit-fill-available; overflow: hidden; }
+        .header { height: 45px; background-color: #0f0f14; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; border-bottom: 1px solid #1c1c24; }
+        .logo { font-size: 16px; font-weight: bold; color: #ffffff; }
+        .export-btn { background-color: #2f80ed; color: white; border: none; padding: 5px 12px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; }
+        .preview-window { flex: 1; display: flex; justify-content: center; align-items: center; background-color: #000000; position: relative; overflow: hidden; }
         video { width: 100%; height: 100%; object-fit: contain; display: none; }
-        .preview-placeholder { text-align: center; color: #8e8e93; font-size: 14px; cursor: pointer; }
-        .preview-placeholder span { font-size: 40px; display: block; margin-bottom: 10px; }
-        .overlay-text { position: absolute; font-size: 24px; font-weight: bold; color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); padding: 5px 10px; display: none; top: 50%; left: 50%; transform: translate(-50%, -50%); border: 1px dashed #ffffff; pointer-events: none; }
-        .timeline-section { height: 100px; background-color: #14141b; border-top: 1px solid #2c2c35; display: flex; flex-direction: column; position: relative; box-sizing: border-box; }
-        .timeline-tools { height: 35px; display: flex; align-items: center; padding: 0 12px; gap: 15px; border-bottom: 1px solid #2c2c35; }
-        .tool-btn { background: none; border: none; color: #cccccc; font-size: 14px; cursor: pointer; }
-        .timeline-track { flex: 1; display: flex; align-items: center; justify-content: center; color: #55555e; font-size: 11px; font-family: monospace; padding: 5px; }
-        .bottom-nav { height: 65px; background-color: #09090d; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #1c1c24; padding-bottom: env(safe-area-inset-bottom); box-sizing: border-box; }
-        .nav-item { display: flex; flex-direction: column; align-items: center; color: #a5a5a5; cursor: pointer; font-size: 11px; text-decoration: none; background: none; border: none; padding: 5px 0; width: 55px; }
-        .nav-icon { font-size: 18px; margin-bottom: 3px; }
+        .preview-placeholder { text-align: center; color: #8e8e93; font-size: 13px; cursor: pointer; }
+        .preview-placeholder span { font-size: 30px; display: block; margin-bottom: 5px; }
+        .overlay-text { position: absolute; font-size: 20px; font-weight: bold; color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); padding: 5px 10px; display: none; top: 50%; left: 50%; transform: translate(-50%, -50%); border: 1px dashed #ffffff; pointer-events: none; }
+        .timeline-section { height: 90px; background-color: #14141b; border-top: 1px solid #2c2c35; display: flex; flex-direction: column; position: relative; }
+        .timeline-tools { height: 30px; display: flex; align-items: center; padding: 0 12px; gap: 15px; border-bottom: 1px solid #2c2c35; }
+        .tool-btn { background: none; border: none; color: #cccccc; font-size: 12px; cursor: pointer; }
+        .timeline-track { flex: 1; display: flex; align-items: center; justify-content: center; color: #55555e; font-size: 10px; font-family: monospace; }
+        .bottom-nav { height: 60px; background-color: #09090d; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #1c1c24; padding-bottom: env(safe-area-inset-bottom); }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: #a5a5a5; cursor: pointer; font-size: 10px; background: none; border: none; padding: 2px 0; width: 50px; }
+        .nav-icon { font-size: 16px; margin-bottom: 2px; }
         #file-input, #audio-input { display: none; }
     </style>
 </head>
